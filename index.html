@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Start the Grot Toe Show</title>
+  </head>
+  <body>
+    <h1>Start the Grot Toe Show</h1>
+    <button onclick="triggerShow()">Start Show</button>
+    <script>
+      function triggerShow() {
+        fetch('https://11f3-82-43-180-134.ngrok-free.app/trigger')  // Use ngrok HTTPS URL
+          .then(response => {
+            console.log('Status:', response.status);
+            return response.text();
+          })
+          .then(text => {
+            console.log('Response Text:', text);
+            alert('Show triggered! Response: ' + text);
+          })
+          .catch(err => {
+            console.error('Fetch Error:', err);
+            alert('Error triggering show: ' + err);
+          });
+      }
+    </script>
+  </body>
+</html>
